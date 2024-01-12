@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&family=Rubik:wght@300;400;500&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: roboto, regular400;
+}
+
+header, main, nav {
+
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header {
+    background-color: black;
+    flex-grow: 1;
+    flex-basis: 100%;
+    flex-shrink: 1;
+    height: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.219);
+}
+
+main {
+    flex-grow: 20;
+    flex-basis: 200px;
+    flex-shrink: 1;
+    background-color: #d8d7d7;
+    min-height: 100vh;
+}
+
+#conteiner-menu-button {
+    display: flex;
+    
+}
+
+.button-padrao {
+    text-decoration: none;
+    color: white;
+    width: 100px;
+    height: 35px;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#conteiner-conteudo {
+    padding: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0.5px 0px 1.5px rgba(0, 0, 0, 0.226);
+    
+    
+    
+}
+
+th {
+    background-color: #9e9e9e;
+    text-align: left;
+}
+
+table tr:nth-child(odd) {
+    background-color: #e6e6e6;
+}
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+td, th {
+    padding: 20px;
+}
+
+.colum-1 {
+    
+}
+
+.colum-2 {
+    
+}
+
+.colum-3, .colum-4 {
+    width: 15%;
+}
+
+.color-red {
+    background-color: crimson;
+}
+
+.color-verde {
+    background-color: green;
+}
+
+.color-roxo {
+    background-color: blueviolet;
+}
+
+.color-cinza {
+    background-color: #9e9e9e;
+}
+
+nav {
+    background-color: #424242;
+    flex-grow: 1;
+    flex-basis: 150px;
+    flex-shrink: 1;
+}
+
+ul {
+
+}
+
+li {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+li a:hover {
+    color: green;
+    transition: 0.5s;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+}
+
+#marcador {
+    padding: 3px;
+    border-radius: 150px;
+    color: white;
+    font-size: 13px;
+}

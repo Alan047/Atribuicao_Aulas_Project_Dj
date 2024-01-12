@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Professor</th>
+            <th>Disciplinas</th>
+            <th>Semestre</th>
+        </tr>
+    </thead>
+    <tbody>
+       {% for i in professor %}
+       <tr>
+            <td>
+                <a href="#">{{i.professor}}</a>
+            </td>
+            <td>
+                {{i.professor}}
+            </td>
+            <td>
+                {{i.professor}}
+            </td>
+       </tr>
+          
+       {% endfor %}
+    </tbody>
+</table>
+
+{% endblock conteudo %}

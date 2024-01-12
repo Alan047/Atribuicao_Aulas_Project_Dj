@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Semestre</th>
+            <th>Status</th>
+            <th>Nº Cursos</th>
+
+        </tr>
+    </thead>
+    <tbody>
+       {% for i in semestre %}
+            <tr>
+                    <td class="colum-1"><a href="{% url 'select_semestre' i.id %}">{{i}}</a></td>
+                    <td class="colum-2"><span id="marcador" class="color-roxo"> {{i.status}}</span></td>
+                    <td class="colum-3">{{ i.curso_semestre.all.count}}</td>
+                    
+            </tr>
+       {% endfor %}
+    </tbody>
+</table>
+
+{% endblock conteudo %}
