@@ -3,13 +3,6 @@
 
 {% block conteudo %}
 
-<h3> Semestre:</h3><p>{{semestre}}</p>
-<hr>
-<br>
-<h3>Status:</h3><p>{{semestre.status}}</p>
-<hr>
-<br>
-<br>
 <table>
     <thead>
         <tr>
@@ -19,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-       {% for i in semestre.cursos.all %}
+       {% for i in curso %}
        <tr>
             <td>
                 <a href="#">{{i}}</a>

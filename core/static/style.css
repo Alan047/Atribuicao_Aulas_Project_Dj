@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&family=Rubik:wght@300;400;500&display=swap');
 
 
+
+
 * {
     padding: 0;
     margin: 0;
@@ -10,9 +12,9 @@
     font-family: roboto, regular400;
 }
 
-header, main, nav {
+/* header, main, nav {
 
-}
+} */
 
 body {
     display: flex;
@@ -83,13 +85,13 @@ td, th {
     padding: 20px;
 }
 
-.colum-1 {
+/* .colum-1 {
     
 }
 
 .colum-2 {
     
-}
+} */
 
 .colum-3, .colum-4 {
     width: 15%;
@@ -118,9 +120,9 @@ nav {
     flex-shrink: 1;
 }
 
-ul {
+/* ul {
 
-}
+} */
 
 li {
     text-align: left;
@@ -143,5 +145,9 @@ li a {
     padding: 3px;
     border-radius: 150px;
     color: white;
+    font-size: 13px;
+}
+
+i {
     font-size: 13px;
 }

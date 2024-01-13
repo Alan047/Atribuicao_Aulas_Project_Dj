@@ -24,4 +24,5 @@ urlpatterns = [
     path('semestre/', views.semestre, name='semestre'),
     path('professores/', views.professores, name='professores'),
     path('semestre/select=<int:id>', views.select_semestre, name='select_semestre'),
+    path('curso/', views.cursos_list_page, name='cursos'),
 ]
