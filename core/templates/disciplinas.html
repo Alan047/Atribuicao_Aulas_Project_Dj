@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+{% block opcoes %}
+<div id="conteiner-menu-button">
+    <a href="#" class="button-padrao color-verde">adicionar</a>
+</div>
+
+{% endblock opcoes %}
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Disciplinas</th>
+            <th>Período</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+       {% for i in disciplinas %}
+       <tr>
+            <td>
+                <a href="#">{{i}}</a>
+            </td>
+            <td>
+                {{i.periodo}}
+            </td>
+            <td>
+                <a href="#" class="button-padrao color-verde">Candidatar</a>
+            </td>
+       </tr>
+          
+       {% endfor %}
+    </tbody>
+</table>
+
+{% endblock conteudo %}

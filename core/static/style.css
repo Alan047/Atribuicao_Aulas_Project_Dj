@@ -40,6 +40,7 @@ main {
 
 #conteiner-menu-button {
     display: flex;
+    justify-content: end;
     
 }
 
@@ -54,8 +55,16 @@ main {
     text-align: center;
 }
 
+#botao-enviar {
+    color: white;
+}
+
 #conteiner-conteudo {
     padding: 20px;
+}
+
+#select-dicplinas-periodo {
+    height: 20px;
 }
 
 table {
@@ -150,4 +159,43 @@ li a {
 
 i {
     font-size: 13px;
+}
+
+#formularios {
+    display: flex;
+    justify-content: center;
+    width:100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+form input, select {
+    background-color: #9e9e9e;
+    border: 1px solid rgba(0, 0, 0, 0.342);
+    border-radius: 5px;
+}
+
+input {
+    height: 30px;
+}
+
+select {
+    height: 100px;
+}
+
+#checkbox-todos {
+    width: 20px;
+    height: 80%;
+    padding-top: 10px;
+    
+    
+}
+
+input, section, label {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

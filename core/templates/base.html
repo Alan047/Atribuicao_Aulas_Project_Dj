@@ -14,11 +14,7 @@
     </nav>
     
     <main>
-        <div id="conteiner-menu-button">
-            <a href="#" class="button-padrao color-red">Botão 1</a>
-            <a href="#" class="button-padrao color-verde">Botão 2</a>
-        </div>
-
+        {% block opacoes %}{% endblock opacoes %}
         <div id="conteiner-conteudo">
             {% block conteudo %}{% endblock conteudo %}
         </div>

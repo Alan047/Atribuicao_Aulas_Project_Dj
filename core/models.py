@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.db.models import F
 
 
 
@@ -27,9 +28,11 @@ class Status(models.Model):
     
 class Semestre(models.Model):
     semestre = models.CharField( max_length=50)
-    cursos = models.ManyToManyField(Curso, verbose_name="curso", blank=True, null=True)
+    cursos = models.ManyToManyField(Curso, verbose_name="curso", blank=True)
     status = models.ForeignKey(Status, verbose_name='status', on_delete=models.SET_NULL, null=True, blank=True)
     date_create = models.DateTimeField(default=timezone.now)
+    disciplinas = models.ManyToManyField(Disciplina, verbose_name='disciplina', blank=True)
+    # par_or_impar = mode
 
 
     def __str__(self) -> str:

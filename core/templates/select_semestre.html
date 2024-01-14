@@ -25,7 +25,7 @@
                 <a href="#">{{i}}</a>
             </td>
             <td>
-              <a href="#"> disciplina(as)({{i.disciplina_set.all.count}})</a> 
+              <a href="{% url "disciplinas" %}"> disciplina(as)({{i.disciplina_set.all.count}})</a> 
             </td>
             <td>
                 {% for s in i.semestre_set.all %}

@@ -2,6 +2,11 @@
 
 {% block conteudo %}
 
+{% block opcoes %}
+<div id="conteiner-menu-button">
+    <a href="{% url "addSemestre" %}" class="button-padrao color-verde">adicionar</a>
+</div> 
+{% endblock opcoes %}
 <table>
     <thead>
         <tr>
@@ -16,7 +21,7 @@
             <tr>
                     <td class="colum-1"><a href="{% url 'select_semestre' i.id %}">{{i}}</a></td>
                     <td class="colum-2"><span id="marcador" class="color-roxo"> {{i.status}}</span></td>
-                    <td class="colum-3">{{ i.curso_semestre.all.count}}</td>
+                    <td class="colum-3"><a href="#" class="button-padrao color-verde">editar</a></td>
                     
             </tr>
        {% endfor %}
