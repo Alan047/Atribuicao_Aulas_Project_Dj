@@ -35,9 +35,13 @@ def cursos_list_page(request):
     }
     return render(request, 'curso_list_page.html', context)
 
-def disciplinas_list(request):
-    disciplinas = Disciplina.objects.filter(periodo__isnull=False).extra(where=['"core_disciplina"."periodo" % 2 = 0'])
-    print(disciplinas)
+def disciplinas_list(request, id, id2):
+    semestre = Semestre.objects.get(pk=id2)
+    curso = Curso.objects.get(pk=id)
+    disciplinas = curso.disciplina_set.all().filter(semestre=semestre)
+
+    print(semestre)
+    print(disciplinas.filter(semestre=semestre))
     context = {
         'disciplinas': disciplinas
     }
@@ -50,9 +54,11 @@ def adicionar_semestre(request):
     if request.method == 'POST':
         form = SemestreForm(request.POST)
         if form.is_valid():
-            form.save(commit=False)
-            form.disciplinas = disciplinas[0]
-            form.save()
+            semestre = form.save(commit=False)
+            semestre.save()
+            semestre.disciplinas.set(disciplinas)
+            cursos = form.cleaned_data['cursos']
+            semestre.cursos.set(cursos)
         return redirect('/adicionar_semestre')
     context = {
         'form':form
