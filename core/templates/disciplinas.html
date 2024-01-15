@@ -3,6 +3,7 @@
 
 {% block conteudo %}
 
+<h3>{{disciplinas.filter.first.curso}}</h3>
 {% block opcoes %}
 <div id="conteiner-menu-button">
     <a href="#" class="button-padrao color-verde">adicionar</a>
@@ -10,7 +11,7 @@
 
 {% endblock opcoes %}
 
-{{disciplinas.filter.first.curso}}
+<br>
 <table>
     <thead>
         <tr>

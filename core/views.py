@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Semestre, Professor, Curso, Disciplina
 from .forms import SemestreForm
+from django.contrib.auth.forms import AuthenticationForm
 
 def home(request):
     return render(request, 'home.html')
@@ -49,19 +50,37 @@ def disciplinas_list(request, id, id2):
 
 def adicionar_semestre(request):
     form = SemestreForm()
-    disciplinas = Disciplina.objects.filter(periodo__isnull=False).extra(where=['"core_disciplina"."periodo" % 2 = 0'])
-    print(disciplinas)
     if request.method == 'POST':
+        disciplinas_pares = Disciplina.objects.filter(periodo__isnull=False).extra(where=['"core_disciplina"."periodo" % 2 = 0'])
+        disciplinas_impares = Disciplina.objects.filter(periodo__isnull=False).extra(where=[' "core_disciplina"."periodo" % 2 > 0'])
         form = SemestreForm(request.POST)
+        print(request.POST['periodos'])
         if form.is_valid():
             semestre = form.save(commit=False)
             semestre.save()
-            semestre.disciplinas.set(disciplinas)
-            cursos = form.cleaned_data['cursos']
-            semestre.cursos.set(cursos)
+            if request.POST['periodos'] == 'impar':
+                semestre.disciplinas.set(disciplinas_impares)
+                print('entrou no impar')
+            if request.POST['periodos'] == 'par':
+                semestre.disciplinas.set(disciplinas_pares)
+                print('entrou no par')
+            semestre.cursos.set(form.cleaned_data['cursos'])
+            semestre.disciplinas.set(form.cleaned_data['disciplinas'])
         return redirect('/adicionar_semestre')
     context = {
         'form':form
     }
     return render(request, 'adicionar_semestre.html', context)
+
+def login_view(request):
+    form = AuthenticationForm(request)
+    context = {
+        'form ' : form,
+    }
+
+    print(form)
+
+    return render(request, 'login.html', {
+        'form':form
+    })
 
