@@ -15,22 +15,20 @@
         <tr>
             <th>Curso</th>
             <th>Disciplinas</th>
-            <th>Semestre</th>
+            <th>Área</th>
         </tr>
     </thead>
     <tbody>
        {% for i in semestre.cursos.all %}
        <tr>
             <td>
-                <a href="#">{{i}}</a>
+                <a href="{% url "disciplinas" id=i.id id2=semestre.id %}">{{i}}</a>
             </td>
             <td>
-              <a href="{% url "disciplinas" id=i.id id2=semestre.id %}"> disciplina(as)({{i.disciplina_set.all.count}})</a> 
+              <a href="{% url "disciplinas" id=i.id id2=semestre.id %}">({{i.disciplina_set.all.count}})</a> 
             </td>
             <td>
-                {% for s in i.semestre_set.all %}
-                {{s}}
-                {% endfor %}
+                <p>#</p>
             </td>
        </tr>
           

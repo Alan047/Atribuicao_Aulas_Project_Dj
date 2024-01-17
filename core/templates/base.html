@@ -6,11 +6,15 @@
 <body>
 
 <nav>
+    <div id="box-user">
+        <h3><i class="bi bi-person-circle"></i> {{request.user}}</h3>
+    </div>
     <ul>
-        <li><a href="{% url "semestre" %}"><i class="bi bi-calendar3"></i> Semeste</a></li>
-        <li><a href="{% url "cursos" %}"><i class="bi bi-mortarboard"></i> Cursos</a></li>
-        <li><a href="{% url "professores" %}"><i class="bi bi-person-vcard-fill"></i> Professores</a></li>
+        <li><a href="{% url "semestre" %}" {% if request.path_info == '/semestre/' %} class="teste" {% endif %}><i class="bi bi-calendar3"></i> Semeste </a></li>
+        <li><a href="{% url "cursos" %}" {% if request.path_info == '/curso/' %} class="teste" {% endif %}><i class="bi bi-mortarboard"></i> Cursos</a></li>
+        <li><a href="{% url "professores" %}" {% if request.path_info == '/professores/' %} class="teste" {% endif %}><i class="bi bi-person-vcard-fill"></i> Professores</a></li>
         <li><a href="/admin/"><i class="bi bi-person-gear"></i> Administração</a></li>
+        <li><a href="{% url "logout" %}" id="link-sair"><i class="bi bi-door-closed-fill"></i> Sair</a></li>
     </nav>
     
     <main>
