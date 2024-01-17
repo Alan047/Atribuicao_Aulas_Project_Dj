@@ -7,21 +7,28 @@
     <thead>
         <tr>
             <th>Professor</th>
+            <th>Matrícula</th>
+            <th>E-mail</th>
             <th>Disciplinas</th>
-            <th>Semestre</th>
         </tr>
     </thead>
     <tbody>
        {% for i in professor %}
        <tr>
             <td>
-                <a href="#">{{i.professor}}</a>
+                <a href="#">{{i.professor.first_name}} {{i.professor.last_name}}</a>
             </td>
             <td>
                 {{i.professor}}
             </td>
             <td>
-                {{i.professor}}
+                {{i.professor.email}}
+            </td>
+            <td class="table-professor-coluna-disciplinas">
+                {% for d in i.disciplinas.all %}
+                <span class="disciplinas-celula">{{d}}</span>
+                {% endfor %}
+                
             </td>
        </tr>
           
