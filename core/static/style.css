@@ -271,12 +271,17 @@ input, section, label {
 }
 
 #button-login {
-    background-color: green;
+    background-color: darkgreen;
     color: #ffffff;
     margin-bottom: 20px;
     height: 40px;
     border-radius: 100px;
     border: 0px;
+    cursor: pointer;
+}
+
+#button-login:hover {
+    background-color: green;
 }
 
 #login-body {
@@ -289,6 +294,7 @@ input, section, label {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
 }
 
 #box-login label {
@@ -308,4 +314,6 @@ input, section, label {
 .teste {
     color: darkgreen;
 }
+
+
 
