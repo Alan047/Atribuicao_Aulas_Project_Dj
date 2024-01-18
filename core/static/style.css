@@ -180,47 +180,82 @@ i {
     font-size: 13px;
 }
 
-.formularios {
+#formularios-addSemestre {
+    height: 90vh;
     display: flex;
     justify-content: center;
-    width:100%;
-    background-color: #424242;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.342);
     border-radius: 5px;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.288);
+    background-color: #9e9e9e;
 }
 
-form {
+#form-add-semestre {
+    width: 60%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#form-add-semestre #input-semestre, select{
+   margin-bottom: 20px;
+   width: 80%;
+   padding: 5px;
+   border-radius: 5px;
+   border: none;
+}
+
+#form-add-semestre .label-input-text {
+    display: block;
+    width: 80%;
+}
+
+
+#form-add-semestre a {
+    font-size: 13px;
+    width: 80%;
+    text-decoration: none;
+}
+
+#button-enviar-addSemestre {
+    width: 80%;
+    background-color: green;
+    border: none;
+    height: 30px;
+    border-radius: 150px;
+    margin-top: 20px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+#button-enviar-addSemestre:hover {
+    background-color: darkgreen;
+}
+
+#form-add-semestre a:hover {
+    color: green;
+}
+
+#select-disciplinas-addSemestre {
+    margin-bottom: 0px;
+}
+
+#form-add-semestre div {
+    margin: 0px;
+
+    
+}
+
+
+
+#form-login {
     display: flex;
     flex-direction: column;
     width: 60%;
 }
 
-form input, select {
-    background-color: #9e9e9e;
-    border: 1px solid rgba(0, 0, 0, 0.342);
-    border-radius: 5px;
-}
-
-input {
-    height: 30px;
-}
-
-select {
-    height: 100px;
-}
-
-#checkbox-todos {
-    width: 20px;
-    height: 80%;
-    padding-top: 10px;
-    
-    
-}
-
-input, section, label {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
 
 #id_disciplinas {
     display: none;
@@ -263,6 +298,7 @@ input, section, label {
     height: 40px;
     padding: 10px;
     margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 #box-login form {
@@ -330,6 +366,7 @@ input, section, label {
 .table-professor-coluna-disciplinas {
     max-width: 100px;
 }
+
 
 
 

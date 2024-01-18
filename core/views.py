@@ -61,22 +61,9 @@ def disciplinas_list(request, id, id2):
 def adicionar_semestre(request):
     form = SemestreForm()
     if request.method == 'POST':
-        disciplinas_pares = Disciplina.objects.filter(periodo__isnull=False).extra(where=['"core_disciplina"."periodo" % 2 = 0'])
-        disciplinas_impares = Disciplina.objects.filter(periodo__isnull=False).extra(where=[' "core_disciplina"."periodo" % 2 > 0'])
-        form = SemestreForm(request.POST)
-        print(request.POST['periodos'])
-        if form.is_valid():
-            semestre = form.save(commit=False)
-            semestre.save()
-            if request.POST['periodos'] == 'impar':
-                semestre.disciplinas.set(disciplinas_impares)
-                print('entrou no impar')
-            if request.POST['periodos'] == 'par':
-                semestre.disciplinas.set(disciplinas_pares)
-                print('entrou no par')
-            semestre.cursos.set(form.cleaned_data['cursos'])
-            semestre.disciplinas.set(form.cleaned_data['disciplinas'])
-        return redirect('/adicionar_semestre')
+        disciplinas_pares = Disciplina.objects.filter(periodo__isnull=False, impar_par='par')
+        disciplinas_impares = Disciplina.objects.filter(periodo__isnull=False, impar_par='impar')
+        print(request.POST)
     context = {
         'form':form
     }

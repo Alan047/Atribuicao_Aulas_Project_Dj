@@ -12,9 +12,13 @@ class SemestreAdmin(admin.ModelAdmin):
 class CursoAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(Professor, Disciplina, Status)  
+@admin.register(Professor, Status)  
 class CursoAdmin(admin.ModelAdmin):
+
     pass
+@admin.register(Disciplina)  
+class CursoAdmin(admin.ModelAdmin):
+    list_display = ('diciplina','periodo', 'curso', 'impar_par')
 
 
 

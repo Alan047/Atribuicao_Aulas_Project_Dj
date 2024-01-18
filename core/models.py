@@ -16,6 +16,16 @@ class Disciplina(models.Model):
     diciplina = models.CharField(max_length=50)
     curso = models.ForeignKey(Curso, verbose_name='curso', on_delete=models.CASCADE, null=True ,blank=True)
     periodo = models.IntegerField(blank=True, null=True)
+    impar_par = models.CharField(max_length=6, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.periodo % 2 == 0:
+            self.impar_par = 'par'
+            print('É par')
+        else:
+            self.impar_par = 'impar'
+            print('É impar')
+        super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return self.diciplina

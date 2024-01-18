@@ -2,20 +2,22 @@
 
 {% block conteudo %}
 
-<div id="formularios" class="formularios">
-<form method="post">
+<div id="formularios-addSemestre">
+<form method="post" id="form-add-semestre">
     {% csrf_token %}
-    {% for field in form %}
-    <label for="{{ field.id_for_label }}">{{field.label}}</label>
-        {{field}}
-        {% endfor %}
-       <select name="periodos" id="select-dicplinas-periodo">
-        <option value="0" selected >-------</option>
-        <option value="par">Priodos pares</option>
-        <option value="impar">Priodos impares</option>
-       </select>
-       <a href="#" id="disciplinas-mostrar-select">selecionar manualmente</a>
-       <input type="submit" value="Enviar" id="botao-enviar" class="color-verde">
+    <label for="input-semestre" class="label-input-text">Semestre</label>
+    <input type="text" name="semestre" id="input-semestre">
+    <label for="select-cursos-addSemestre" class="label-input-text">curos</label>
+    <select name="curos" id="select-cursos-addSemestre" multiple>
+        <option value="curso1">curo1</option>
+    </select>
+    <label for="select-disciplinas-addSemestre" class="label-input-text">Disciplinas</label>
+    <select name="disciplinas" id="select-disciplinas-addSemestre" multiple>
+        <option value="materia 1">materia 1</option>
+        <option value="materia 2">materia 2</option>
+    </select>
+    <a href="#">Escolher automáticamente</a>
+    <input id="button-enviar-addSemestre" type="button" value="Enviar">
 </form>
 </div>
 {% endblock conteudo %}
