@@ -4,7 +4,7 @@
 
 {% block opcoes %}
 <div id="conteiner-menu-button">
-    <a href="{% url "addSemestre" %}" class="button-padrao color-verde">adicionar</a>
+    <a href="#" class="button-padrao color-verde" onclick="mostrar_model_addSemestre()">adicionar</a>
 </div> 
 {% endblock opcoes %}
 <table>
@@ -27,5 +27,38 @@
        {% endfor %}
     </tbody>
 </table>
+<div id="model-janela-addSemestre" class="modal-addSemestre">
+    <div id="formulario-model-addSemestre">
+        <h3>Adicionar novo semestre</h3>
+    <form action="#">
+        <label for="input-semestre">Semeste</label>
+        <input type="text" id="input-semestre">
 
+        <label for="select-curso">Cursos</label>
+        <select name="curso" id="select-curso" multiple>
+            {% for i in cursos %}
+            <option value="1">{{i}}</option>
+            {% endfor %}
+        </select>
+        <label for="select-disciplinas">Disciplinas</label>
+        <select name="curso" id="select-disciplinas" multiple>
+            {% for i in disciplinas %}
+            <option value="1" class="{{i.periodo}}" >{{i}} - {{i.periodo}}ª período - {{i.curso}}</option>
+            {% endfor %}
+        </select>
+        <div class="campo" id="conteinar-radios">
+            <label>
+                <input type="radio" name="devweb" value="Impar" checked > Ímpares
+            </label>
+            <label>
+                <input type="radio" name="devweb" value="Pares" onclick="selecionar_pares()"> Pares
+            </label>
+        </div>
+        <div id="conteiner-buttons">
+        <input type="button" value="Salvar" class="button-model-form-addSemestre">
+        <input type="button" value="Cancelar" class="button-model-form-addSemestre" onclick="fechar_model_addSemestre()">
+    </div>
+    </form>
+</div>
+</div>
 {% endblock conteudo %}

@@ -11,8 +11,12 @@ def home(request):
 @login_required(login_url="/login")
 def semestre(request):
     semestre = Semestre.objects.all().order_by('-id')
+    cursos = Curso.objects.all()
+    disciplinas = Disciplina.objects.all().order_by('curso')
     context = {
-        'semestre':semestre
+        'semestre':semestre,
+        'cursos':cursos,
+        'disciplinas':disciplinas,
     }
     print(dir(request))
     print(request.path_info)

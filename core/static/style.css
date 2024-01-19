@@ -36,6 +36,7 @@ main {
     flex-shrink: 1;
     background-color: #d8d7d7;
     min-height: 100vh;
+    width: 100vw;
 }
 
 #conteiner-menu-button {
@@ -366,6 +367,8 @@ i {
 .table-professor-coluna-disciplinas {
     max-width: 100px;
 }
+
+
 
 
 
