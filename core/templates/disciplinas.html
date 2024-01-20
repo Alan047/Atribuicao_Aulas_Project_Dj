@@ -3,10 +3,10 @@
 
 {% block conteudo %}
 
-<h3>{{disciplinas.filter.first.curso}}</h3>
+<h3>{{semestre}}{{disciplinas_semestre.filter.first.curso}}</h3>
 {% block opcoes %}
-<div id="conteiner-menu-button">
-    <a href="#" class="button-padrao color-verde">adicionar</a>
+<div class="conteiner-menu-button">
+    <a href="#" class="button-padrao color-verde" onclick="mostrar_model_addSemestre('model-addDisciplinas')"><i class="bi bi-easel2-fill"></i> adicionar</a>
 </div>
 
 {% endblock opcoes %}
@@ -21,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-       {% for i in disciplinas %}
+       {% for i in disciplinas_semestre %}
        <tr>
             <td>
                 <a href="#">{{i}}</a>
@@ -30,12 +30,27 @@
                 {{i.periodo}}
             </td>
             <td>
-                <a href="#" class="button-padrao color-verde">Candidatar</a>
+                <a href="#" class="button-padrao color-verde"> Candidatar <i class="bi bi-check-circle-fill"></i></a>
             </td>
        </tr>
           
        {% endfor %}
     </tbody>
 </table>
+<div id="model-addDisciplinas">
+    <form  method="post" id="form-model-addDisciplinas"> 
+        {% csrf_token %}
+    <h3>Adicionar disciplinas</h3>
+    <select name="select-addDisciplinas" id="select-addDisciplinas" multiple >
+        {% for d in disciplinas_curso %}
+        <option value="{{d.id}}">{{d}}</option>
+        {% endfor %}
+      </select>
+      <div class="conteiner-buttons">
+        <input type="submit" value="Salvar" class="button-model-form-addSemestre">
+        <input type="button" value="Cancelar" class="button-model-form-addSemestre" onclick="fechar_model_addSemestre('model-addDisciplinas')">
+      </div>
+</form>
+</div>
 
 {% endblock conteudo %}

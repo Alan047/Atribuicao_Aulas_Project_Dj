@@ -22,7 +22,7 @@
        {% for i in semestre.cursos.all %}
        <tr>
             <td>
-                <a href="{% url "disciplinas" id=i.id id2=semestre.id %}">{{i}}</a>
+                <a href="{% url "disciplinas" id=semestre.id id2=i.id %}">{{i}}</a> 
             </td>
             <td>
               <a href="{% url "disciplinas" id=i.id id2=semestre.id %}">({{i.disciplina_set.all.count}})</a> 

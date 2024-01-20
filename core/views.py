@@ -18,8 +18,6 @@ def semestre(request):
         'cursos':cursos,
         'disciplinas':disciplinas,
     }
-    print(dir(request))
-    print(request.path_info)
     return render(request, 'semestre.html', context)
 
 @login_required(login_url="/login")
@@ -50,28 +48,37 @@ def cursos_list_page(request):
 
 @login_required(login_url="/login")
 def disciplinas_list(request, id, id2):
-    semestre = Semestre.objects.get(pk=id2)
-    curso = Curso.objects.get(pk=id)
-    disciplinas = curso.disciplina_set.all().filter(semestre=semestre)
-
-    print(semestre)
-    print(disciplinas.filter(semestre=semestre))
+    print(id)
+    semestre = Semestre.objects.get(pk=id)
+    curso = Curso.objects.get(pk=id2)
+    disciplinas = curso.disciplina_set.all()
+    if request.method == 'POST':
+        disciplinas_form = request.POST.getlist('select-addDisciplinas')
+        print(f' disc {disciplinas_form}')
+        for d in disciplinas_form:
+            semestre.disciplinas.add(d)
     context = {
-        'disciplinas': disciplinas
+        'disciplinas_semestre': disciplinas.filter(semestre=semestre),
+        'disciplinas_curso': Disciplina.objects.exclude(semestre=semestre).filter(curso=curso),
+        'curso': curso,
+        'semestre' : semestre,
     }
     return render(request, 'disciplinas.html', context)
 
 @login_required(login_url="/login")
 def adicionar_semestre(request):
-    form = SemestreForm()
     if request.method == 'POST':
-        disciplinas_pares = Disciplina.objects.filter(periodo__isnull=False, impar_par='par')
-        disciplinas_impares = Disciplina.objects.filter(periodo__isnull=False, impar_par='impar')
-        print(request.POST)
-    context = {
-        'form':form
-    }
-    return render(request, 'adicionar_semestre.html', context)
+        semestre = request.POST.get('semestre')
+        cursos = request.POST.getlist('curso')
+        disciplinas_periodo = request.POST.get('select-disciplinas')
+        print(disciplinas_periodo)
+        novo_semestre = Semestre.objects.create(semestre=semestre)
+        for curso in cursos:
+            ...
+            # curso_object = Curso.objects.get(pk=int(curso))
+            # novo_semestre.cursos.add(curso_object)
+          
+    return redirect('semestre')
 
 def login_view(request):
     if request.method == 'POST':

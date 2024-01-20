@@ -25,7 +25,7 @@ urlpatterns = [
     path('professores/', views.professores, name='professores'),
     path('semestre/select=<int:id>', views.select_semestre, name='select_semestre'),
     path('curso/', views.cursos_list_page, name='cursos'),
-    path('dicliplinas/<int:id2>/<int:id>', views.disciplinas_list, name='disciplinas'),
+    path('dicliplinas/<int:id>/<int:id2>', views.disciplinas_list, name='disciplinas'),
 
     #adicionar 
      path('adicionar_semestre/', views.adicionar_semestre, name='addSemestre'),

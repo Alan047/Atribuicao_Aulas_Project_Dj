@@ -6,7 +6,7 @@ from django.contrib.auth.admin import UserAdmin
 
 @admin.register(Semestre)
 class SemestreAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('id', 'semestre')
    
 @admin.register(Curso)  
 class CursoAdmin(admin.ModelAdmin):

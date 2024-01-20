@@ -86,6 +86,31 @@
 }
 
 
+/* CSS DO MODEL DE ADICIONAR DISCIPLINAS  */
+
+
+#model-addDisciplinas {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.363);
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+#model-addDisciplinas form {
+    background-color: white;
+    height: 50%;
+    width: 50%;
+    padding: 20px;
+}
+
+#model-addDisciplinas.abrir {
+    display: flex;
+}
 
 
 
