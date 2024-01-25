@@ -49,8 +49,18 @@ class Semestre(models.Model):
         return self.semestre
     
 class Professor(models.Model):
+
+    NIVELGRADUACAO = [
+        ('Graduação', 'Graduação'),
+        ('Mestrado', 'Mestrado'),
+        ('Doutorado', 'Doutorado'),
+    ]
+
     professor = models.OneToOneField(User, verbose_name='professor', on_delete=models.CASCADE)
     disciplinas = models.ManyToManyField(Disciplina, verbose_name='disciplinas')
+    tempo_exercicio = models.DateField(blank=True, null=True)
+    nivel_graduacao = models.CharField(max_length=50, choices=NIVELGRADUACAO, default='Graduação', blank=True, null=True)
+    area = models.CharField(max_length=16, blank=True, null=True)
 
     def __str__(self) -> str:
         return self.professor.username

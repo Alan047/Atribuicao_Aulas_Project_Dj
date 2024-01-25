@@ -67,16 +67,7 @@ main {
     height: 20px;
 }
 
-table {
-    border-collapse: collapse;
-    border-radius: 3px;
-    overflow: hidden;
-    width: 100%;
-    box-shadow: 0.5px 0px 1.5px rgba(0, 0, 0, 0.226);
-    
-    
-    
-}
+
 
 th {
     background-color: #9e9e9e;
@@ -88,22 +79,6 @@ table tr:nth-child(odd) {
 }
 table tr:nth-child(even) {
     background-color: #ffffff;
-}
-
-td, th {
-    padding: 10px;
-}
-
-/* .colum-1 {
-    
-}
-
-.colum-2 {
-    
-} */
-
-.colum-3, .colum-4 {
-    width: 15%;
 }
 
 .color-red {
@@ -148,9 +123,6 @@ nav {
     color: crimson;
 }
 
-/* ul {
-
-} */
 
 li {
     text-align: left;
@@ -199,7 +171,7 @@ i {
     
 }
 
-#form-add-semestre #input-semestre, select{
+#form-add-semestre #input-semestre{
    margin-bottom: 20px;
    width: 80%;
    padding: 5px;
@@ -365,6 +337,31 @@ i {
 .table-professor-coluna-disciplinas {
     max-width: 100px;
 }
+
+.btn-default {
+    padding: 10px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    min-width: 100px;
+    cursor: pointer;
+}
+
+.btn-default-acao {
+    border: none;
+    color: white;
+    padding: 0px 5px 0px 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    min-width: 85px;
+}
+
+.btn-default-acao:hover {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.74);
+}
+
+
+
 
 
 

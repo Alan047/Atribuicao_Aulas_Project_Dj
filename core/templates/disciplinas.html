@@ -3,11 +3,16 @@
 
 {% block conteudo %}
 
-<h3>{{semestre}}{{disciplinas_semestre.filter.first.curso}}</h3>
+<h3>{{semestre}} {{disciplinas_semestre.filter.first.curso}}</h3>
 {% block opcoes %}
-<div class="conteiner-menu-button">
-    <a href="#" class="button-padrao color-verde" onclick="mostrar_model_addSemestre('model-addDisciplinas')"><i class="bi bi-easel2-fill"></i> adicionar</a>
-</div>
+{% for group in user.groups.all %}
+            {% if group.name == 'administradores' %}
+            <div class="conteiner-menu-button">
+                <a href="#" class="button-padrao color-verde" onclick="mostrar_model_addSemestre('model-addDisciplinas')"><i class="bi bi-easel2-fill"></i> adicionar</a>
+            </div>
+            {% endif %}
+        {% endfor %}
+
 
 {% endblock opcoes %}
 
@@ -21,8 +26,9 @@
         </tr>
     </thead>
     <tbody>
-       {% for i in disciplinas_semestre %}
-       <tr>
+        
+        {% for i in disciplinas_semestre %}
+        <tr>
             <td>
                 <a href="#">{{i}}</a>
             </td>
@@ -30,27 +36,41 @@
                 {{i.periodo}}
             </td>
             <td>
-                <a href="#" class="button-padrao color-verde"> Candidatar <i class="bi bi-check-circle-fill"></i></a>
+                
+                    {% if grupo_admin %}
+                    <button class="color-red btn-default-acao"> 
+                    Remover <i class="bi bi-x-circle"></i></i>
+                    </button>
+                    {% else %}
+                    <button class="color-verde btn-default-acao"> 
+                    Candidatar <i class="bi bi-person-fill-add"></i>
+                    </button>
+                    {% endif %}
+                
             </td>
-       </tr>
-          
-       {% endfor %}
+        </tr>
+        
+        {% endfor %}
+        {% for group in user.groups.all %}
+            {% if group.name == 'administradores' %}
+            {% for i in disciplinas_curso %}
+            <tr>
+                 <td>
+                     <p> <a href="#">{{i}}</a> (excluída)</p>
+                 </td>
+                 <td>
+                     {{i.periodo}}
+                 </td>
+                 <td>
+                     <button class="color-verde btn-default-acao"> Adicionar <i class="bi bi-plus-circle-fill"></i></button>
+                 </td>
+            </tr>
+               
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
     </tbody>
 </table>
-<div id="model-addDisciplinas">
-    <form  method="post" id="form-model-addDisciplinas"> 
-        {% csrf_token %}
-    <h3>Adicionar disciplinas</h3>
-    <select name="select-addDisciplinas" id="select-addDisciplinas" multiple >
-        {% for d in disciplinas_curso %}
-        <option value="{{d.id}}">{{d}}</option>
-        {% endfor %}
-      </select>
-      <div class="conteiner-buttons">
-        <input type="submit" value="Salvar" class="button-model-form-addSemestre">
-        <input type="button" value="Cancelar" class="button-model-form-addSemestre" onclick="fechar_model_addSemestre('model-addDisciplinas')">
-      </div>
-</form>
-</div>
+
 
 {% endblock conteudo %}

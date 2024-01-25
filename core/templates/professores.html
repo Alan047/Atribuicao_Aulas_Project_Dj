@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 
 
+
+
+
 {% block conteudo %}
+
+
+{% block opcoes %}
+
+{% for group in user.groups.all %}
+            {% if group.name == 'administradores' %}
+            <div class="conteiner-menu-button">
+                <button type="button" class="btn-default color-verde" onclick="mostrar_model_addSemestre('janela-model')">Cadastrar novo Professor</button>
+            </div> 
+            {% endif %}
+        {% endfor %}
+{% endblock opcoes %}
 
 <table>
     <thead>
@@ -35,5 +50,7 @@
        {% endfor %}
     </tbody>
 </table>
+
+{% include "formularios/form_addProfessor.html" %}
 
 {% endblock conteudo %}

@@ -8,8 +8,24 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url="/login")
 def home(request):
     return render(request, 'home.html')
+
 @login_required(login_url="/login")
 def semestre(request):
+    if request.method == 'POST':
+        ano_semestre = request.POST.get('ano_semestre')
+        semestre = request.POST.get('semestre')
+        cursos = request.POST.getlist('cursos')
+        disciplinas = 'impar' if request.POST.get('disciplinas') == '1' else 'par'
+        print(disciplinas)
+        novo_semestre = Semestre.objects.create(semestre=f'{ano_semestre}/{semestre}')
+        for curso_id in cursos:
+            curso = Curso.objects.get(pk=curso_id)
+            curso_disciplinas = Disciplina.objects.filter(curso=curso, impar_par=disciplinas )
+            for disciplina in curso_disciplinas:
+                novo_semestre.disciplinas.add(disciplina)
+            print(curso_disciplinas)
+            novo_semestre.cursos.add(curso)
+        return redirect('semestre')
     semestre = Semestre.objects.all().order_by('-id')
     cursos = Curso.objects.all()
     disciplinas = Disciplina.objects.all().order_by('curso')
@@ -22,10 +38,15 @@ def semestre(request):
 
 @login_required(login_url="/login")
 def professores(request):
+    if request.method == 'POST':
+        print(request.POST.get('macula'))
     professor = Professor.objects.all()
     context = {
-        'professor':professor
+        'professor':professor,
+        'form': SemestreForm()
     }
+    
+
     return render(request, 'professores.html', context)
 
 @login_required(login_url="/login")
@@ -62,6 +83,7 @@ def disciplinas_list(request, id, id2):
         'disciplinas_curso': Disciplina.objects.exclude(semestre=semestre).filter(curso=curso),
         'curso': curso,
         'semestre' : semestre,
+        'grupo_admin': True if str(request.user.groups.all()[0]) == 'administradores' else False,
     }
     return render(request, 'disciplinas.html', context)
 
@@ -94,3 +116,4 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/login')
+

@@ -1,0 +1,36 @@
+{% extends "formularios/_model_base.html" %}
+
+{% block janela_model_conteudo %}
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <h3>Cadastrar Novo Semestre</h3>
+    </div>
+    
+        <label for="ano_semestre">Ano:</label>
+        <input type="number" id="ano_semestre" name="ano_semestre" required  min="2024" >
+
+        <label for="semestre">Semestre:</label>
+        <input type="number" id="semestre" name="semestre" required min="1" max="2"  value="1">
+
+        <label for="cursos">Cursos:</label>
+        <select id="cursos" name="cursos" multiple required >
+            {% for curso in cursos %}
+            <option value="{{curso.id}}">{{curso}}</option>
+            {% endfor %}
+            
+        </select>
+
+        <label for="entrada-exercicio">Disciplinas:</label>
+        <select name="disciplinas" id="disciplinas" required >
+            <option selected disabled ></option>
+            <option value="1">Apenas disciplinas ímpares</option>
+            <option value="2">Apenas disciplinas pares</option>
+        </select>
+        <div class="conteiner-buttons">
+            <button type="submit" class="btn-default color-verde">Salvar</button>
+            <button type="button" class="btn-default color-red" onclick="fechar_model_addSemestre('janela-model')">Cancelar</button>
+        </div>
+    </form>
+
+{% endblock janela_model_conteudo %}

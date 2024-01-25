@@ -1,0 +1,62 @@
+
+/* CSS DO JANELA MODEL  */
+
+.janela-model {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.500);
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+.janela-model-conteudo {
+    background-color: white;
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.507);
+
+}
+
+
+/* CSS DO JANELA MODEL FORMULÁRIOS PADÃO  */
+
+.janela-model-conteudo form {
+    display: block;
+    width: 70%;
+    height: 100%;
+}
+
+.janela-model-conteudo form label {
+    display: block;
+}
+
+.janela-model-conteudo form input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.janela-model-conteudo form select {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.janela-model-conteudo form div {
+    margin-bottom: 20px;
+}
+
+.janela-model-conteudo form .conteiner-buttons {
+    margin-top: 20px;
+}
+
+
+
+
+

@@ -1,0 +1,41 @@
+{% extends "formularios/_model_base.html" %}
+
+{% block janela_model_conteudo %}
+<form action=".">
+    <div>
+        <h3>Cadastrar professor</h3>
+    </div>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome">
+
+        <label for="sobrenome">Sobrenome:</label>
+        <input type="text" id="sobrenome">
+
+        <label for="e-mail">Email:</label>
+        <input type="text" id="e-mail">
+
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula">
+
+        <label for="nivel-graduacao">Nível de graduação:</label>
+        <select id="nivel-graduacao">
+            <option value="#" selected disabled >-------</option>
+            <option value="1">Graduação</option>
+            <option value="2">Mestrado</option>
+            <option value="1">Doutorado</option>
+        </select>
+
+        <label for="entrada-exercicio">Entrada em exercício:</label>
+        <input type="date" name="entrada-exercicio" id="entrada-exercicio">
+
+        <label for="are-concurso">Área que prestou o concurso:</label>
+        <input type="text" id="are-concurso">
+
+        <div class="conteiner-buttons">
+            <button type="submit" class="btn-default color-verde">Salvar</button>
+            <button type="button" class="btn-default color-red" onclick="fechar_model_addSemestre('janela-model')">Cancelar</button>
+        </div>
+    </form>
+
+{% endblock janela_model_conteudo %}

@@ -1,0 +1,41 @@
+/* CONFIGURAÇÕES PARA TODAS AS TABELAS */
+
+table {
+    border-collapse: collapse;
+    border-radius: 1px;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0.5px 0px 1.5px rgba(0, 0, 0, 0.226);
+}
+
+
+table a {
+    text-decoration: double;
+    color: darkgreen;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+/* CONFIGURAÇÃO DA TABELA DE SEMESTRES */ 
+
+#semestre td {
+    padding: 20px 0px 20px 0px;
+    text-align: center;
+}
+
+#semestre th {
+    text-align: center;
+}
+
+/* CONFIGURAÇÃO DA TABELA DE SEMESTRE>CURSO */
+
+#semestre_curso td {
+    padding: 5px;
+}
+
+
+
+
+

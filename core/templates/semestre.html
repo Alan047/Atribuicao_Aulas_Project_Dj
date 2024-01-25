@@ -3,58 +3,35 @@
 {% block conteudo %}
 
 {% block opcoes %}
-<div class="conteiner-menu-button">
-    <a href="#" class="button-padrao color-verde" onclick="mostrar_model_addSemestre('model-janela-addSemestre')"><i class="bi bi-calendar3"></i> adicionar</a>
-</div> 
 
+{% for group in user.groups.all %}
+            {% if group.name == 'administradores' %}
+            <div class="conteiner-menu-button">
+                <button type="button" class="btn-default color-verde" onclick="mostrar_model_addSemestre('janela-model')">Adicionar semestre</button>
+            </div> 
+            {% endif %}
+        {% endfor %}
 {% endblock opcoes %}
-<table>
+<table id="semestre">
     <thead>
         <tr>
             <th>Semestre</th>
-            <th>Status</th>
             <th>Nº Cursos</th>
-
+            <th>Status</th>
+        
         </tr>
     </thead>
     <tbody>
        {% for i in semestre %}
             <tr>
-                    <td class="colum-1"><a href="{% url 'select_semestre' i.id %}">{{i}}</a></td>
-                    <td class="colum-2"><span id="marcador" class="color-roxo"> {{i.status}}</span></td>
-                    <td class="colum-3"><a href="#" class="button-padrao color-verde"><i class="bi bi-pencil"></i> editar</a></td>
-                    
+                    <td class="colum-1"><a href="{% url 'select_semestre' i.id %}"><strong>{{i}}</strong></a></td>
+                    <td class="colum-2">{{i.cursos.all.count}}</td>
+                    <td class="colum-3"><span id="marcador" class="color-roxo"> {{i.status}}</span></td>                  
             </tr>
        {% endfor %}
     </tbody>
 </table>
-<div id="model-janela-addSemestre" class="modal-addSemestre">
-    <div id="formulario-model-addSemestre">
-        <h3>Adicionar novo semestre</h3>
-    <form action="{% url "addSemestre" %}" method="post" autocomplete="off">
-        {% csrf_token %}
-        <label for="input-semestre">Semeste</label>
-        <input type="text" id="input-semestre" name="semestre" required>
+    
+{% include "formularios/form_addSemestre.html" %}
 
-        <label for="select-curso">Cursos</label>
-        <select name="curso" id="select-curso" multiple required>
-            {% for i in cursos %}
-            <option value="{{i.id}}">{{i}}</option>
-            {% endfor %}
-        </select>
-        <label for="select-disciplinas">Disciplinas por período</label>
-        <select name="select-disciplinas" id="select-disciplinas" required>
-            <option selected disabled value="">---------</option>
-            <option value="1">ímpares</option>
-            <option value="2">pares</option>
-        </select>
-        <div class="campo" id="conteinar-radios">           
-        </div>
-        <div class="conteiner-buttons">
-       <input type="submit" value="Salvar" class="button-model-form-addSemestre">
-        <input type="button" value="Cancelar" class="button-model-form-addSemestre" onclick="fechar_model_addSemestre('model-janela-addSemestre')">
-    </div>
-    </form>
-</div>
-</div>
 {% endblock conteudo %}
